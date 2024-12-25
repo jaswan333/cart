@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat and Make Offer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <style>
+        body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f8f8f8;
+}
+
+.container {
+  width: 100%;
+  max-width: 500px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(195, 23, 23, 0.1);
+  overflow: hidden;
+}
+
+.product-header {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid #ddd;
+}
+
+.seller-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 16px;
+}
+
+.product-info h3 {
+  margin: 0;
+}
+
+.product-info p {
+  margin: 4px 0 0;
+  color: #555;
+}
+
+.action-tabs {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+}
+
+.action-tabs button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  background: #f8f8f8;
+  cursor: pointer;
+}
+
+.action-tabs button.active {
+  background: rgb(255, 255, 255);
+  border-bottom: 3px solid teal;
+  color: teal;
+}
+
+.chat-section, .offer-section {
+  padding: 16px;
+}
+
+.hidden {
+  display: none;
+}
+
+.quick-responses {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.quick-responses button {
+  padding: 8px 12px;
+  background: #f0f0f0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+textarea, input {
+  width: calc(100% - 32px);
+  margin: 16px 0;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+textarea {
+  height: 80px;
+}
+
+button {
+  padding: 8px 16px;
+  background: teal;
+  color: rgb(43, 207, 218);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background: #ccc;
+}
+
+.offer-buttons button {
+  background: #40da4d;
+  color: #4caf50;
+}
+
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+  const chatTab = document.getElementById('chatTab');
+  const offerTab = document.getElementById('offerTab');
+  const chatSection = document.getElementById('chatSection');
+  const offerSection = document.getElementById('offerSection');
+  const messageInput = document.getElementById('messageInput');
+  const sendMessage = document.getElementById('sendMessage');
+  const offerInput = document.getElementById('offerInput');
+  const sendOffer = document.getElementById('sendOffer');
+  const quickResponses = document.querySelectorAll('.quick-responses button');
+
+  chatTab.addEventListener('click', () => {
+    chatSection.classList.remove('hidden');
+    offerSection.classList.add('hidden');
+    chatTab.classList.add('active');
+    offerTab.classList.remove('active');
+  });
+
+  offerTab.addEventListener('click', () => {
+    offerSection.classList.remove('hidden');
+    chatSection.classList.add('hidden');
+    offerTab.classList.add('active');
+    chatTab.classList.remove('active');
+  });
+
+  sendMessage.addEventListener('click', () => {
+    alert(`Message Sent: ${messageInput.value}`);
+    messageInput.value = '';
+  });
+
+  sendOffer.addEventListener('click', () => {
+    alert(`Offer Sent: ₹${offerInput.value}`);
+    offerInput.value = '';
+  });
+
+  quickResponses.forEach(button => {
+    button.addEventListener('click', () => {
+      messageInput.value = button.textContent;
+    });
+  });
+});
+
+    </script>
+  <div class="container">
+    <div class="product-header">
+      <img src="seller.jpg" alt="Seller" class="seller-image">
+      <div class="product-info">
+        <h3>Boult Air Podes</h3>
+        <p>₹ 700</p>
+      </div>
+    </div>
+    
+    <div class="action-tabs">
+      <button id="chatTab" class="active">Chat</button>
+      <button id="offerTab">Make Offer</button>
+    </div>
+
+    <div id="chatSection" class="chat-section">
+      <p>Chat to know more!</p>
+      <div class="quick-responses">
+        <button>Hello</button>
+        <button>Is it available?</button>
+        <button>Okay</button>
+        <button>No problem</button>
+        <button>Please reply</button>
+        <button>Not interested</button>
+      </div>
+      <textarea id="messageInput" placeholder="Type a message"></textarea>
+      <button id="sendMessage">Send</button>
+    </div>
+
+    <div id="offerSection" class="offer-section hidden">
+      <p>₹ 700</p>
+      <div class="offer-buttons">
+        <button>₹ 780</button>
+        <button>₹ 750</button>
+        <button>₹ 700</button>
+        <button>₹ 680</button>
+      </div>
+      <input type="text" id="offerInput" placeholder="Enter your offer">
+      <button id="sendOffer">Send Offer</button>
+    <a href="D:\add hackathon\home2.html" > <button id="sendOffer">Home</button> </a>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

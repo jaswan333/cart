@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Details with Location</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* General Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Styles */
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 24px;
+    color: #2c3e50;
+}
+
+/* Main Section */
+.item-page {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Image Section */
+.image-section {
+    flex: 1;
+    max-width: 600px;
+}
+
+.image-section img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.thumbnail-row {
+    display: flex;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.thumbnail-row img {
+    width: 70px;
+    height: 70px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.thumbnail-row img:hover {
+    transform: scale(1.1);
+}
+
+/* Details Section */
+.details-section {
+    flex: 1;
+    max-width: 400px;
+}
+
+.details-section h2 {
+    font-size: 20px;
+    color: #2c3e50;
+}
+
+.details-section p {
+    margin-bottom: 15px;
+    color: #555;
+    line-height: 1.5;
+}
+
+.details-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.details-section ul li {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.details-section #upload-location {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.details-section #update-location-btn {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.details-section #update-location-btn:hover {
+    background-color: #2980b9;
+}
+
+.details-section .chat-btn {
+    background-color: #2ecc71;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.details-section .chat-btn:hover {
+    background-color: #27ae60;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .item-page {
+        flex-direction: column;
+    }
+
+    .details-section {
+        max-width: 100%;
+    }
+
+    .image-section {
+        max-width: 100%;
+    
+    }
+}
+.but{
+    border-radius: 10px;
+    padding: 10px;
+    text-size-adjust: 5px;
+}
+
+    </style>
+    
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Item Details</h1>
+        </header>
+        <main class="item-page">
+           
+            <div class="image-section">
+                <img src="boatt.jpg" alt="Item Image">
+                <div class="thumbnail-row">
+                    <img src="baot1.jpg"  width="100px" height="200px" alt="Thumbnail 1">
+                    <img src="boat2.jpg" alt="Thumbnail 2">
+                    <img src="boat3.jpg" alt="Thumbnail 3">
+                    <img src="boat4.jpg" alt="Thumbnail 4">
+                </div>
+            </div>
+
+            <div class="details-section">
+                <h2>Description</h2>
+                <p>Casio G-shock Bluetooth digital watch dial men, GBD-100SM-1DR (G1093)</p>
+                <p>With international warranty.</p>
+
+                <h3>Contact Information</h3>
+                <ul>
+                    <li><strong>Phone:</strong> 9876543210</li>
+                    <li><strong>Location:</strong> <span id="location-display">Pathergudda, Prothrapur, Andaman & Nicobar Islands</span></li>
+                </ul>
+<!-- 
+                <label for="upload-location">Update Location:</label>
+                <input type="text" id="upload-location" placeholder="Enter your location" />
+                <button id="update-location-btn">Upload Location</button> -->
+               
+<!-- <script>
+    document.getElementById("update-location-btn").addEventListener("click", function () {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+
+                const locationDisplay = document.getElementById("location-display");
+                locationDisplay.textContent = `Latitude: ${latitude.toFixed(5)}, Longitude: ${longitude.toFixed(5)}`;
+
+                alert("Location updated successfully!");
+            },
+            (error) => {
+                switch (error.code) {
+                    case error.PERMISSION_DENIED:
+                        alert("User denied the request for Geolocation.");
+                        break;
+                    case error.POSITION_UNAVAILABLE:
+                        alert("Location information is unavailable.");
+                        break;
+                    case error.TIMEOUT:
+                        alert("The request to get user location timed out.");
+                        break;
+                    case error.UNKNOWN_ERROR:
+                        alert("An unknown error occurred.");
+                        break;
+                }
+            }
+        );
+    } else {
+        alert("Geolocation is not supported by this browser.");
+    }
+});
+
+</script> -->
+<a href="D:\add hackathon\chat.html"><button class="but" style="background-color:#27ae60;color:#f9f9f9;">Chat with Seller</button></a>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
