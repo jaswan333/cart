@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Unique Profile</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f3f4f6;
+    }
+
+    .profile-container {
+      max-width: 900px;
+      margin: 30px auto;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .profile-header {
+      background-color: #4caf50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .profile-header h1 {
+      margin: 0;
+    }
+
+    .profile-header p {
+      margin: 5px 0 0;
+    }
+
+    .profile-body {
+      display: flex;
+      padding: 20px;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .profile-picture {
+      flex: 1;
+      max-width: 200px;
+      text-align: center;
+    }
+
+    .profile-picture img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 4px solid #4caf50;
+    }
+
+    .profile-details {
+      flex: 2;
+    }
+
+    .profile-details h2 {
+      margin: 0 0 10px;
+      color: #333;
+    }
+
+    .profile-details p {
+      margin: 5px 0;
+      color: #666;
+    }
+
+    .profile-edit-btn {
+      display: block;
+      margin: 20px auto 0;
+      padding: 10px 20px;
+      font-size: 16px;
+      color: white;
+      background-color: #007BFF;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .profile-edit-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .edit-form {
+      display: none;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-top: 1px solid #ddd;
+    }
+
+    .edit-form input,
+    .edit-form textarea,
+    .edit-form button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    .edit-form button {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .edit-form button:hover {
+      background-color: #3e8e41;
+    }
+  </style>
+</head>
+<body>
+  <div class="profile-container">
+    <!-- Profile Header -->
+    <div class="profile-header">
+      <h1 id="userName">Jaswan L</h1>
+      <p id="userEmail">jaswan333@gmail.com</p>
+    </div>
+
+    <!-- Profile Body -->
+    <div class="profile-body">
+      <div class="profile-picture">
+        <img id="profileImage" src="https://via.placeholder.com/150" alt="Profile Picture">
+      </div>
+      <div class="profile-details">
+        <h2>About Me</h2>
+        <p id="userBio">I am a Data science engineer who loves coding and building awesome projects.</p>
+        <h2>Location</h2>
+        <p id="userLocation">Vellore,Tamil Nadu</p>
+        <h2>Points</h2>
+        <p id="pts"> 000 points</p>
+        <button class="profile-edit-btn" onclick="toggleEditForm()">Edit Profile</button>
+        
+      </div>
+    </div>
+
+    <!-- Edit Form -->
+    <div class="edit-form" id="editForm">
+      <h2>Edit Your Profile</h2>
+      <input type="text" id="editName" placeholder="Enter your name">
+      <input type="email" id="editEmail" placeholder="Enter your email">
+      <textarea id="editBio" placeholder="Enter your bio" rows="3"></textarea>
+      <input type="text" id="editLocation" placeholder="Enter your location">
+      <input type="file" id="editImage" accept="image/*">
+      <button onclick="saveProfile()">Save Changes</button>
+    </div>
+  </div>
+
+  <script>
+    function toggleEditForm() {
+      const editForm = document.getElementById("editForm");
+      editForm.style.display = editForm.style.display === "block" ? "none" : "block";
+    }
+
+    function saveProfile() {
+      const name = document.getElementById("editName").value;
+      const email = document.getElementById("editEmail").value;
+      const bio = document.getElementById("editBio").value;
+      const location = document.getElementById("editLocation").value;
+      const image = document.getElementById("editImage").files[0];
+
+      if (name) document.getElementById("userName").textContent = name;
+      if (email) document.getElementById("userEmail").textContent = email;
+      if (bio) document.getElementById("userBio").textContent = bio;
+      if (location) document.getElementById("userLocation").textContent = location;
+
+      if (image) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          document.getElementById("profileImage").src = e.target.result;
+        };
+        reader.readAsDataURL(image);
+      }
+
+      toggleEditForm();
+    }
+  </script>
+</body>
+</html>
